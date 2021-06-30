@@ -1,10 +1,10 @@
 import { Text, View } from "react-native"
 import * as React from 'react'
-import { colorStyle, layoutStyle } from "../style/globalStyle"
+import { colorStyle, layoutStyle } from "../../style/globalStyle"
 import { style } from "./style"
 import { Button, Input } from "react-native-elements"
 import FontAwesome5Icon from "react-native-vector-icons/FontAwesome5"
-import { facebook } from "../style/variables"
+import { facebook } from "../../style/variables"
 
 const LoginPage = () => {
     return (
