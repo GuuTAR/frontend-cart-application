@@ -3,7 +3,7 @@ import LoginPage from '../page/Login'
 import React from 'react'
 import Entypo from 'react-native-vector-icons/Entypo'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
-import { globalStyle } from '../style/globalStyle'
+import { colorStyle } from '../style/globalStyle'
 
 const Tab = createBottomTabNavigator()
 
@@ -13,12 +13,12 @@ const RootRouter = () => {
         switch (route.name) {
             case "Home":
                 return focused ? 
-                    <Entypo name="shop" size={20} style={[globalStyle.pinkText, ]} /> :
-                    <Entypo name="shop" size={20} style={[globalStyle.blackText, ]} />
+                    <Entypo name="shop" size={20} style={[colorStyle.pinkText, ]} /> :
+                    <Entypo name="shop" size={20} style={[colorStyle.blackText, ]} />
             case "Profile":
                 return focused ? 
-                <FontAwesome5 name="user" size={20} style={[globalStyle.pinkText, ]} /> :
-                <FontAwesome5 name="user" size={20} style={[globalStyle.blackText, ]} />
+                <FontAwesome5 name="user" size={20} style={[colorStyle.pinkText, ]} /> :
+                <FontAwesome5 name="user" size={20} style={[colorStyle.blackText, ]} />
             default:
                 return;
         }
