@@ -11,7 +11,7 @@ export const stylesheet = StyleSheet.create({
         padding: 8,
         width: "100%"
     },
-    search: {
+    searchContainer: {
         flex: 1,
         justifyContent: 'center',
         width: 100,
