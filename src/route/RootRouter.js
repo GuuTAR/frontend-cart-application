@@ -1,9 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import LoginPage from '../page/Login'
+import LoginPage from '../page/login/Login'
 import React from 'react'
 import Entypo from 'react-native-vector-icons/Entypo'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import { colorStyle } from '../style/globalStyle'
+import HomePage from '../page/home/Home'
 
 const Tab = createBottomTabNavigator()
 
@@ -31,7 +32,7 @@ const RootRouter = () => {
 
     return (
         <Tab.Navigator screenOptions={iconHandler} >
-            <Tab.Screen name="Home" component={LoginPage} />
+            <Tab.Screen name="Home" component={HomePage} />
             <Tab.Screen name="Profile" component={LoginPage} />
         </Tab.Navigator>
     )
