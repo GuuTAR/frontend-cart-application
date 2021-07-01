@@ -2,7 +2,7 @@ import { ScrollView, Text, View } from "react-native"
 import * as React from "react"
 import { colorStyle, layoutStyle } from "../../style/globalStyle"
 import ProductCard from "./component/productCard/ProductCard"
-import { productContainer, searchBar, style } from "./style"
+import { input, productContainer, searchBar, searchContainer } from "./style"
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import { SearchBar } from "react-native-elements"
 import Col from "../../component/Col"
@@ -17,8 +17,8 @@ const HomePage = () => {
             <Row containerStyle={[searchBar, scroll && colorStyle.darkPinkBG]}>
                 <SearchBar
                     placeholder="ค้นหา..."
-                    containerStyle={[style.search, layoutStyle.row]}
-                    inputStyle={[style.input]}
+                    containerStyle={[searchContainer, layoutStyle.row]}
+                    inputStyle={[input]}
                     platform="android"
                 />
                 <AntDesign name="shoppingcart" size={30} />
@@ -27,7 +27,7 @@ const HomePage = () => {
                 onScrollBeginDrag={() => setScroll(true)} 
                 onMomentumScrollEnd={() => setScroll(false)}
             >
-                <Col containerStyle={productContainer}>
+                <Row containerStyle={productContainer}>
                     <ProductCard first />
                     <ProductCard />
                     <ProductCard />
@@ -47,7 +47,7 @@ const HomePage = () => {
                     <ProductCard />
                     <ProductCard />
                     <ProductCard />
-                </Col>
+                </Row>
             </ScrollView>
         </View>
     )
