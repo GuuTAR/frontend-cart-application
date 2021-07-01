@@ -1,9 +1,9 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import LoginPage from '../page/login/Login'
 import React from 'react'
 import Entypo from 'react-native-vector-icons/Entypo'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import { colorStyle } from '../style/globalStyle'
+import LoginPage from '../page/login/Login'
 import HomePage from '../page/home/Home'
 
 const Tab = createBottomTabNavigator()
