@@ -1,45 +1,11 @@
-import { StyleSheet } from "react-native";
-import { facebook } from "../style/variables";
+import { colorStyle, layoutStyle } from "../../style/globalStyle";
+import { stylesheet } from "./sheet";
 
-export const style = StyleSheet.create({
-    loginPage: {  
-       flex: 1
-    },
-    background: {
-        width: '100%',
-        height: 200,
+export const loginPage = [stylesheet.loginPage, colorStyle.grayBG]
+export const background = [stylesheet.background, colorStyle.darkPinkBG, layoutStyle.center]
 
-        textAlign: 'center',
-        position: 'absolute' ,
-
-        borderBottomRightRadius: 15,
-        borderBottomLeftRadius: 15,
-    },
-    title: {
-        fontSize: 20
-    },
-    loginContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    formContainer: {
-        width: 300,
-        height: 250,
-
-        borderRadius: 5,
-
-        paddingHorizontal: 20,
-        paddingVertical: 10,
-        marginHorizontal: 10,
-
-        justifyContent: 'space-evenly',
-    },
-    input: {
-        
-    },
-    otherLoginContainer: {
-        width: 300,
-        height: 60,
-    },
-})
+export const loginTitle = [stylesheet.title, colorStyle.whiteText]
+export const loginContainer = [layoutStyle.center, stylesheet.loginContainer]
+export const formContainer = [colorStyle.whiteBG, stylesheet.formContainer]
+export const input = [stylesheet.input]
+export const otherLoginContainer = [colorStyle.whiteBG, stylesheet.otherLoginContainer, layoutStyle.center]
