@@ -5,11 +5,23 @@ export const stylesheet = StyleSheet.create({
         flex: 1,
         alignItems: 'center'
     },
-    productImg : {
+    productImgWrapper: {
         width: '95%',
         height: '40%',
+        marginVertical: 10,
 
-        marginVertical: 10
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end'
+    },
+    productImg : {
+        width: '100%',
+        height: '100%',
+        position: 'absolute'
+    },
+    addToCartButton: {
+        fontSize: 30,
+        padding: 8,
+        borderRadius: 8,
     },
     productTextWrapper: {
         width: '95%',
