@@ -3,6 +3,7 @@ import * as React from "react"
 import { cartPage, productContainer } from "./style"
 import CartHeader from "./component/header/CartHeader"
 import ProductCard from "./component/productCard/ProductCard"
+import CartFooter from "./component/footer/CartFooter"
 
 const CartPage = () => {
     return (
@@ -18,6 +19,7 @@ const CartPage = () => {
                     <ProductCard />
                 </View>
             </ScrollView>
+            <CartFooter />
         </View>
     )
 }
