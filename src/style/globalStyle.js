@@ -23,6 +23,9 @@ export const colorStyle = StyleSheet.create({
     thinPink: {
         color: thinPink
     },
+    darkPinkText: {
+        color: darkPink
+    }
 })
 
 export const layoutStyle = StyleSheet.create({
