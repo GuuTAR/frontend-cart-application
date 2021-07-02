@@ -1,8 +1,8 @@
-import React, { useLayoutEffect } from "react";
+import React from "react";
 import { createStackNavigator } from '@react-navigation/stack';
-import HomePage from "../page/home/Home";
 import CartPage from "../page/cart/Cart";
 import Navbar from "./TabRouter";
+import ProductPage from "../page/product/Product";
 
 const RootStack = createStackNavigator()
 
@@ -30,6 +30,7 @@ export const HomeStackScreen = ({ navigation }) => {
             }}>
             <HomeStack.Screen name='Home' component={Navbar} />
             <HomeStack.Screen name='Cart' component={CartPage} />
+            <HomeStack.Screen name='Product' component={ProductPage} />
         </HomeStack.Navigator>
     )
 }

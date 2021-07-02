@@ -1,7 +1,7 @@
+import { colorStyle, textStyle } from "../../style/globalStyle";
 import { stylesheet } from "./sheet";
-import { colorStyle, layoutStyle, textStyle } from '../../../../style/globalStyle'
 
-export const headerContainer = [stylesheet.headerContainer]
+export const headerContainer = [stylesheet.headerContainer, colorStyle.darkPinkBG]
 
 export const backButton = [colorStyle.darkPinkBG]
 export const backButtonTitle = [stylesheet.backButtonTitle]
