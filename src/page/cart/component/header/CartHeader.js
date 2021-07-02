@@ -4,10 +4,10 @@ import { backButton, backButtonTitle, headerContainer, headerTitle } from "./sty
 import Row from '../../../../component/Row'
 import { Button } from "react-native-elements" 
 
-const CartHeader = () => {
+const CartHeader = ({goBack}) => {
     return (
         <Row containerStyle={headerContainer}> 
-            <Button title="<" buttonStyle={backButton} titleStyle={backButtonTitle} />
+            <Button title="<" buttonStyle={backButton} titleStyle={backButtonTitle} onPress={() => goBack()} />
             <Text style={headerTitle}>My Cart</Text>
         </Row>
     )
