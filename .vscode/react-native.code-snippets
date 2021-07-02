@@ -1,0 +1,45 @@
+{
+    "Create React Native Component": {
+        "prefix": "fcu",
+        "body": [
+            "import { View } from \"react-native\"",
+            "import React from \"react\"",
+            "",
+            "const ${Component} = () => {",
+            "    return (",
+            "        <View>",
+            "            ${0}",
+            "        </View>",
+            "    )",
+            "}",
+            "",
+            "export default ${Component}"
+        ],
+        "description": "Create React Native Component"
+    },
+    "Init sheet file for contain all styles": {
+        "prefix": "sheet",
+        "body": [
+            "import { StyleSheet } from \"react-native\";",
+            "",
+            "export const stylesheet = StyleSheet.create({",
+            "    ${0}",
+            "})"
+        ],
+        "description": "Init sheet file for contain all styles"
+    },
+    "Add new style": {
+        "prefix": "style",
+        "body": [
+            "export const ${stylename} = [stylesheet.${stylename}]"
+        ],
+        "description": "Add new style"
+    },
+    "Import stylesheet ": {
+        "prefix": "imp-sh",
+        "body": [
+            "import { stylesheet } from './sheet'"
+        ],
+        "description": "Import stylesheet "
+    }
+}
