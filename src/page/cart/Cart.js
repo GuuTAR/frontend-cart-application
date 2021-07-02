@@ -1,14 +1,17 @@
 import { ScrollView, View } from "react-native"
-import * as React from "react"
+import React, { useLayoutEffect } from "react"
 import { cartPage, productContainer } from "./style"
 import CartHeader from "./component/header/CartHeader"
 import ProductCard from "./component/productCard/ProductCard"
 import CartFooter from "./component/footer/CartFooter"
 
-const CartPage = () => {
+const CartPage = ({navigation}) => {
+
+    const handleGoBack = () => navigation.goBack()
+
     return (
         <View style={cartPage}>
-            <CartHeader />
+            <CartHeader goBack={handleGoBack} />
             <ScrollView>
                 <View style={productContainer}>
                     <ProductCard />
