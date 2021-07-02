@@ -1,16 +1,15 @@
-import { ScrollView, Text, View } from "react-native"
-import * as React from "react"
+import { ScrollView, View } from "react-native"
+import React, { useLayoutEffect, useState } from "react"
 import { colorStyle, layoutStyle } from "../../style/globalStyle"
 import ProductCard from "./component/productCard/ProductCard"
-import { input, productContainer, searchBar, searchContainer } from "./style"
+import { cartIcon, input, productContainer, searchBar, searchContainer } from "./style"
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import { SearchBar } from "react-native-elements"
-import Col from "../../component/Col"
 import Row from "../../component/Row"
 
-const HomePage = () => {
+const HomePage = ({navigation}) => {
 
-    const [scroll, setScroll] = React.useState(false)
+    const [scroll, setScroll] = useState(false)
 
     return (
         <View style={[colorStyle.grayBG]}>
@@ -21,8 +20,8 @@ const HomePage = () => {
                     inputStyle={[input]}
                     platform="android"
                 />
-                <AntDesign name="shoppingcart" size={30} />
-            </Row>
+                <AntDesign name="shoppingcart" size={30} onPress={() => navigation.push('Cart')} style={cartIcon} />
+            </Row> 
             <ScrollView style={{marginBottom: 66}} 
                 onScrollBeginDrag={() => setScroll(true)} 
                 onMomentumScrollEnd={() => setScroll(false)}
