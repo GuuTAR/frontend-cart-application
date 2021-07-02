@@ -3,7 +3,10 @@ import { colorStyle, textStyle } from "../../style/globalStyle";
 
 export const productPage = [stylesheet.productPage]
 
+export const productImgWrapper = [stylesheet.productImgWrapper]
 export const productImg = [stylesheet.productImg]
+export const addToCartButton = [stylesheet.addToCartButton, colorStyle.darkPinkBG, colorStyle.whiteText]
+
 export const productNameWrapper = [stylesheet.productTextWrapper]
 export const productName = [stylesheet.productName, textStyle.bold, textStyle.textLeft]
 export const productDescWrapper = [stylesheet.productTextWrapper, stylesheet.productDescWrapper]
