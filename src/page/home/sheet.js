@@ -11,18 +11,21 @@ export const stylesheet = StyleSheet.create({
         padding: 8,
         width: "100%"
     },
-    search: {
+    searchContainer: {
         flex: 1,
-        justifyContent: 'center',
-        width: 100,
-        height: 50,
         borderRadius: 10,
-
-        paddingVertical: 0,
+        
         marginRight: 10,
+        paddingTop: 0,
+        paddingBottom: 0,
+    },
+    cartIcon : {
+        width: 44,
+        height: 44,
+        borderRadius: 22,
+        paddingTop: 7
     },
     input: {
-        height: 20,
-        margin: 0,
+
     }
 })
