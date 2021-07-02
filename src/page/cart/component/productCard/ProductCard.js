@@ -17,7 +17,7 @@ const ProductCard = () => {
                         <Text>na dattebayo! dattebayo! dattebayo! dattebayo! dattebayo!</Text>
                     </Row>      
                     <Row containerStyle={actionWrapper}>
-                        <InputNumber min={1} max={10} />
+                        <InputNumber min={1} max={100} />
                         <Text style={productPrice}>150฿</Text>
                     </Row> 
                 </Col>
