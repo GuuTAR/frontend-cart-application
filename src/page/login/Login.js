@@ -9,7 +9,7 @@ import { observer } from "mobx-react-lite"
 import { useStore } from "../../global_store/useStore"
 import { isSomeInvalidValue } from "../../function/global"
 
-const LoginPage = observer(() => {
+const LoginPage = () => {
 
     const authStore = useStore().authStore
 
@@ -54,6 +54,6 @@ const LoginPage = observer(() => {
             </View>
         </View>
     )
-})
+}
 
 export default LoginPage
