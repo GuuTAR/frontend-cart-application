@@ -11,6 +11,11 @@ const HomePage = ({navigation}) => {
 
     const [scroll, setScroll] = useState(false)
 
+    const handleScroll = (e) => {
+        if (e.nativeEvent.contentOffset.y > 180) setScroll(true)
+        else setScroll(false)
+    }
+
     const goCartPage = () => navigation.push('Cart')
     const goProductPage = (data) => navigation.push('Product', data)
 
@@ -26,8 +31,7 @@ const HomePage = ({navigation}) => {
                 <AntDesign name="shoppingcart" size={30} onPress={goCartPage} style={cartIcon} />
             </Row> 
             <ScrollView style={{marginBottom: 66}} 
-                onScrollBeginDrag={() => setScroll(true)} 
-                onMomentumScrollEnd={() => setScroll(false)}
+                onScroll={handleScroll} 
                 showsVerticalScrollIndicator={false}
             >
                 <Row containerStyle={productContainer}>
