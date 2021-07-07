@@ -8,7 +8,7 @@ import { isSomeInvalidValue } from "../../function/global"
 
 const RegisterPage = () => {
 
-    const authStore = useStore().authStore
+    const { register } = useStore().authStore
 
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
@@ -17,7 +17,7 @@ const RegisterPage = () => {
 
     const handleRegister = () => {
         if (!isSomeInvalidValue(email) && !isSomeInvalidValue(password) && password === rePassword && policyCheck)
-            authStore.register(email, password)
+            register(email, password)
     }
 
     return (

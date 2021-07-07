@@ -8,15 +8,15 @@ import { isSomeInvalidValue } from "../../function/global"
 
 const ProfilePage = observer(() => {
 
-    const authStore = useStore().authStore
+    const { displayName, email } = useStore().authStore
 
     const handleLogout = () => authStore.logout()
 
     return (
         <View style={profilePage}>
             <Text>{`Your logged in as ${!isSomeInvalidValue(authStore.displayName) ? 
-                authStore.displayName : 
-                authStore.email.split("@")[0]}`
+                displayName : 
+                email.split("@")[0]}`
             }
             </Text>
             <Button title="Logout" buttonStyle={logoutButton} onPress={handleLogout} />
