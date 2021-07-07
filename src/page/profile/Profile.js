@@ -8,9 +8,9 @@ import { isSomeInvalidValue } from "../../function/global"
 
 const ProfilePage = observer(() => {
 
-    const { displayName, email } = useStore().authStore
+    const { displayName, email, logout } = useStore().authStore
 
-    const handleLogout = () => authStore.logout()
+    const handleLogout = () => logout()
 
     return (
         <View style={profilePage}>
