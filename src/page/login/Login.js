@@ -5,9 +5,9 @@ import { background, formContainer, input, loginContainer, loginPage, loginTitle
 import { Button, Input } from "react-native-elements"
 import FontAwesome5Icon from "react-native-vector-icons/FontAwesome5"
 import { facebook } from "../../style/variables"
-import { observer } from "mobx-react-lite"
 import { useStore } from "../../global_store/useStore"
 import { isSomeInvalidValue } from "../../function/global"
+import { onFacebookButtonPress } from "../../services/facebook.service"
 
 const LoginPage = () => {
 
@@ -22,6 +22,9 @@ const LoginPage = () => {
         else 
             console.log('Invalid value')
     }
+
+    const handleLoginFacebook = () => onFacebookButtonPress().then(() => console.log('facebook signed in!'))
+    
 
     return (
         <View style={loginPage}>
@@ -49,7 +52,7 @@ const LoginPage = () => {
                 </View>
                 <Text style={[layoutStyle.verMargin10]}>หรือเข้าใช้ด้วยช่องทางอื่น</Text>
                 <View style={otherLoginContainer}>
-                    <FontAwesome5Icon name="facebook-square" size={40} color={facebook} />
+                    <FontAwesome5Icon name="facebook-square" size={40} color={facebook} onPress={handleLoginFacebook} />
                 </View>
             </View>
         </View>
