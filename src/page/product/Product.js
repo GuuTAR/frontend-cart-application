@@ -10,25 +10,28 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 
 const screenHeight = Dimensions.get('screen').height
 
-const ProductPage = ({ name = 'product', desc = 'ของดีเมืองอุทัย', navigation }) => {
+const ProductPage = ({ navigation, route }) => {
 
     const bottomSheet = useRef()
 
     const handleGoBack = () => navigation.goBack()
     const handleshowAddCart = () => bottomSheet.current.open()
+    const handlehideAddCart = () => bottomSheet.current.close()
+
+    const product = route.params
 
     return (
         <View style={productPage}>
-            <Header title={name} goBack={handleGoBack} />
+            <Header title={product?.name || 'product'} goBack={handleGoBack} />
             <View style={productImgWrapper}>
                 <Image source={productPNG} style={productImg} />
                 <AntDesign name="shoppingcart" style={addToCartButton} onPress={handleshowAddCart}/>
             </View>
             <Row containerStyle={productNameWrapper}>
-                <Text style={productName}>{name}</Text>
+                <Text style={productName}>{product?.name || 'product'}</Text>
             </Row>
             <Row containerStyle={productDescWrapper}>
-                <Text>{desc}</Text>
+                <Text>{product?.desc || 'ของดีเมืองอุทัย'}</Text>
             </Row>
             <Row containerStyle={productNameWrapper}>
                 <Text style={otherImgTextWrapper}>รูปสินค้าเพิ่มเติม</Text>
@@ -52,7 +55,7 @@ const ProductPage = ({ name = 'product', desc = 'ของดีเมือง�
                 closeOnPressMask={true}
                 customStyles={{container: {height: screenHeight*0.25}}}
             >
-                <ProductFooter />
+                <ProductFooter product={product} hide={handlehideAddCart} />
             </RBSheet>
         </View>
     )
