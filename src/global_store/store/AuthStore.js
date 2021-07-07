@@ -14,6 +14,7 @@ export default class AuthStore {
     setUserData = (email, name) => {
         runInAction(() => {
             this.email = email
+            this.displayName = name
         })
     }
 
