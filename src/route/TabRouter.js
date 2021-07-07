@@ -5,6 +5,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import { colorStyle } from '../style/globalStyle'
 import HomePage from '../page/home/Home'
 import LandingPage from '../page/landing/Landing'
+import ProfilePage from '../page/profile/Profile'
 
 const Tab = createBottomTabNavigator()
 
@@ -34,7 +35,7 @@ const Navbar = ({route}) => {
     return (
         <Tab.Navigator screenOptions={iconHandler} >
             <Tab.Screen name="Home" component={HomePage} />
-            <Tab.Screen name="Profile" component={LandingPage} />
+            <Tab.Screen name="Profile" component={ProfilePage} />
         </Tab.Navigator>
     )
 }

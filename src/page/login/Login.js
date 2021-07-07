@@ -5,8 +5,7 @@ import { background, formContainer, input, loginContainer, loginPage, loginTitle
 import { Button, Input } from "react-native-elements"
 import FontAwesome5Icon from "react-native-vector-icons/FontAwesome5"
 import { facebook } from "../../style/variables"
-import auth from '@react-native-firebase/auth'
-import { observer } from "mobx-react"
+import { observer } from "mobx-react-lite"
 import { useStore } from "../../global_store/useStore"
 import { isSomeInvalidValue } from "../../function/global"
 

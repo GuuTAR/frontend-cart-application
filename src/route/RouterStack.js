@@ -6,10 +6,13 @@ import ProductPage from "../page/product/Product";
 import RegisterPage from "../page/register/Register";
 import LoginPage from "../page/login/Login";
 import { useStore } from "../global_store/useStore";
+import { observer } from "mobx-react-lite";
+import LandingPage from "../page/landing/Landing";
 
 const RootStack = createStackNavigator()
 
-export const RootStackScreen = () => {
+export const RootStackScreen = observer(() => {
+    
     const authStore = useStore().authStore
 
     return (
@@ -17,13 +20,13 @@ export const RootStackScreen = () => {
             screenOptions={{
                 headerShown: false
             }}>
-            {authStore.user ? 
+            {authStore.email ? 
                 <RootStack.Screen name="Home" component={HomeStackScreen} /> :
                 <RootStack.Screen name="Auth" component={AuthStackScreen} />
             }   
         </RootStack.Navigator>
     )
-}
+})
 
 const HomeStack = createStackNavigator()
 
@@ -47,7 +50,8 @@ export const AuthStackScreen = () => (
         screenOptions={{
             headerShown: false
         }}>
-        <HomeStack.Screen name="SignIn" component={LoginPage} />
-        <HomeStack.Screen name="SignOut" component={RegisterPage} />
+        <AuthStack.Screen name="Landing" component={LandingPage} />
+        <AuthStack.Screen name="SignIn" component={LoginPage} />
+        <AuthStack.Screen name="SignOut" component={RegisterPage} />
     </AuthStack.Navigator>
 )
