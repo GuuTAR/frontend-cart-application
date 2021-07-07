@@ -11,14 +11,14 @@ import { onFacebookButtonPress } from "../../services/facebook.service"
 
 const LoginPage = () => {
 
-    const authStore = useStore().authStore
+    const { login } = useStore().authStore
 
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
 
     const handleLogin = () => {
         if (!isSomeInvalidValue(email) && !isSomeInvalidValue(password))
-            authStore.login(email, password)
+            login(email, password)
         else 
             console.log('Invalid value')
     }

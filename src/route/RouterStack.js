@@ -13,14 +13,14 @@ const RootStack = createStackNavigator()
 
 export const RootStackScreen = observer(() => {
     
-    const authStore = useStore().authStore
+    const { email } = useStore().authStore
 
     return (
         <RootStack.Navigator
             screenOptions={{
                 headerShown: false
             }}>
-            {authStore.email ? 
+            {email ? 
                 <RootStack.Screen name="Home" component={HomeStackScreen} /> :
                 <RootStack.Screen name="Auth" component={AuthStackScreen} />
             }   

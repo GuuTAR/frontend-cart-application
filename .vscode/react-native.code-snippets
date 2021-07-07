@@ -76,5 +76,14 @@
             "})"
         ],
         "description": "run in action mobx"
-    }
+    },
+    "List render mapping": {
+        "prefix": "render",
+        "body": [
+          "const render${Component} = (${Item}, idx) => {",
+          "    ${0}",
+          "}"
+        ],
+        "description": "List render mapping"
+      }
 }
