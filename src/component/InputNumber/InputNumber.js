@@ -5,15 +5,26 @@ import { Button } from "react-native-elements"
 import { useState } from "react"
 import { button, input } from "./style"
 
-const InputNumber = ({min, max, defaultValue}) => {
+const InputNumber = ({min, max, defaultValue, setNumber}) => {
 
     const [value, setValue] = useState(defaultValue || 1)
 
-    const handleMinusOne = () => setValue(min ? (value <= min ? value : value-1) : value-1)
-    const handlePlusOne = () => setValue(max ? (value >= max ? value : value+1) : value+1)
+    const handleMinusOne = () => {
+        const result = min ? (value <= min ? value : value-1) : value-1
+        setValue(result)
+        setNumber(result)
+    }
+    const handlePlusOne = () => {
+        const result = max ? (value >= max ? value : value+1) : value+1
+        setValue(result)
+        setNumber(result)
+    }
 
     const handleChange = (text) => {
-        if (parseInt(text) !== NaN && text.trim() !== '') setValue(parseInt(text))
+        if (parseInt(text) !== NaN && text.trim() !== '') {
+            setValue(parseInt(text))
+            setNumber(parseInt(text))
+        }
     }
     
     const handleMinMaxAfterEditing = () => {
