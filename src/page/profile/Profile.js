@@ -4,6 +4,7 @@ import { Button } from "react-native-elements"
 import { observer } from "mobx-react-lite"
 import { useStore } from '../../global_store/useStore'
 import { logoutButton, profilePage } from "./style"
+import { isSomeInvalidValue } from "../../function/global"
 
 const ProfilePage = observer(() => {
 
@@ -13,7 +14,11 @@ const ProfilePage = observer(() => {
 
     return (
         <View style={profilePage}>
-            <Text>{`Your logged in as ${authStore.email}`}</Text>
+            <Text>{`Your logged in as ${!isSomeInvalidValue(authStore.displayName) ? 
+                authStore.displayName : 
+                authStore.email.split("@")[0]}`
+            }
+            </Text>
             <Button title="Logout" buttonStyle={logoutButton} onPress={handleLogout} />
         </View>
     )
