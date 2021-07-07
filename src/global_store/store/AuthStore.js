@@ -3,22 +3,24 @@ import { firebaseLogin, firebaseLogout } from "../../services/firebase.service"
 
 export default class AuthStore {
     rootStore
-    user
-    displayName
+    email = ""
+    displayName = ""
 
     constructor(rootStore) {
         makeAutoObservable(this)
         this.rootStore = rootStore
     }
 
-    setUserData = (user, name) => {
+    setUserData = (email, name) => {
         runInAction(() => {
-            if(user) this.user = user
-            if(name) this.displayName = name
+            this.email = email
         })
     }
 
-    login = (email, password) => firebaseLogin(email, password)
+    login = (email, password) => firebaseLogin(email, password, this.setUserData)
 
-    logout = () => firebaseLogout()
+    logout = () => {
+        firebaseLogout()
+        this.setUserData("", "")
+    }
 }
