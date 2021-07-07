@@ -12,6 +12,7 @@ const App = observer(() => {
 
   const [initializing, setInitializing] = useState(true)
 
+  // Work when some user logged in
   const onAuthStateChanged = (user) => {
     if (!isSomeInvalidValue(user)) authStore.setUserData(user.email, user.displayName)
     if (initializing) setInitializing(false)
