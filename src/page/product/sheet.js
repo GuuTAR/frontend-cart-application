@@ -31,7 +31,7 @@ export const stylesheet = StyleSheet.create({
         marginBottom: 5
     },
     productDescWrapper: {
-        height: '15%'
+        minHeight: '15%'
     },
     productDesc: {
         fontSize: 20
