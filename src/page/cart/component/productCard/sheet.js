@@ -19,6 +19,10 @@ export const stylesheet = StyleSheet.create({
         width: '35%',
         height: 120
     },
+    productNameWrapper: {
+        alignItems: 'center',
+        justifyContent: 'space-between'
+    },
     productName: {
         fontSize: 18
     },
@@ -28,6 +32,7 @@ export const stylesheet = StyleSheet.create({
 
     actionWrapper: {
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
+        width: "100%"
     }
 })
