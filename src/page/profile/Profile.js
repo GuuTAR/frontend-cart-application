@@ -14,7 +14,7 @@ const ProfilePage = observer(() => {
 
     return (
         <View style={profilePage}>
-            <Text>{`Your logged in as ${!isSomeInvalidValue(authStore.displayName) ? 
+            <Text>{`Your logged in as ${!isSomeInvalidValue(displayName) ? 
                 displayName : 
                 email.split("@")[0]}`
             }
