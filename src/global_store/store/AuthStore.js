@@ -1,5 +1,5 @@
 import { makeAutoObservable, runInAction } from "mobx"
-import { firebaseLogin, firebaseLogout } from "../../services/firebase.service"
+import { firebaseLogin, firebaseLogout, firebaseRegister } from "../../services/firebase.service"
 
 export default class AuthStore {
     rootStore
@@ -17,7 +17,9 @@ export default class AuthStore {
         })
     }
 
-    login = (email, password) => firebaseLogin(email, password, this.setUserData)
+    register = (email, password) => firebaseRegister(email, password)
+
+    login = (email, password) => firebaseLogin(email, password)
 
     logout = () => {
         firebaseLogout()
