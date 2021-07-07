@@ -41,5 +41,40 @@
             "import { stylesheet } from './sheet'"
         ],
         "description": "Import stylesheet "
+    },
+    "Create Handle Function": {
+        "prefix": "handle",
+        "body": [
+            "const handle${function} = () => {",
+            "    ${0}",
+            "}",
+            ""
+        ],
+        "description": "Create Handle Function"
+    },
+    "Create Mobx store": {
+        "prefix": "store",
+        "body": [
+            "import { makeAutoObservable } from \"mobx\"",
+            "",
+            "export default class ${feature}Store {",
+            "    rootStore",
+            "    ",
+            "    constructor(rootStore) {",
+            "        makeAutoObservable(this)",
+            "        this.rootStore = rootStore",
+            "    }",
+            "}"
+        ],
+        "description": "Create Mobx store"
+    },
+    "run in action mobx": {
+        "prefix": "action",
+        "body": [
+            "runInAction(() => {",
+            "    ${0}",
+            "})"
+        ],
+        "description": "run in action mobx"
     }
 }

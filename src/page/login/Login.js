@@ -1,12 +1,29 @@
 import { Text, View } from "react-native"
-import * as React from 'react'
+import React, { useState } from 'react'
 import { colorStyle, layoutStyle } from "../../style/globalStyle"
 import { background, formContainer, input, loginContainer, loginPage, loginTitle, otherLoginContainer } from "./style"
 import { Button, Input } from "react-native-elements"
 import FontAwesome5Icon from "react-native-vector-icons/FontAwesome5"
 import { facebook } from "../../style/variables"
+import auth from '@react-native-firebase/auth'
+import { observer } from "mobx-react"
+import { useStore } from "../../global_store/useStore"
+import { isSomeInvalidValue } from "../../function/global"
 
-const LoginPage = () => {
+const LoginPage = observer(() => {
+
+    const authStore = useStore().authStore
+
+    const [email, setEmail] = useState()
+    const [password, setPassword] = useState()
+
+    const handleLogin = () => {
+        if (!isSomeInvalidValue(email) && !isSomeInvalidValue(password))
+            authStore.login(email, password)
+        else 
+            console.log('Invalid value')
+    }
+
     return (
         <View style={loginPage}>
             <View style={background}>
@@ -18,6 +35,7 @@ const LoginPage = () => {
                         label="อีเมล"
                         placeholder="email@address.com"
                         leftIcon={<FontAwesome5Icon name="user-alt" />}
+                        onChange={e => setEmail(e.nativeEvent.text)}
                         style={input}
                     />
                     <Input
@@ -25,9 +43,10 @@ const LoginPage = () => {
                         placeholder="password"
                         leftIcon={<FontAwesome5Icon name="key" />}
                         secureTextEntry
+                        onChange={e => setPassword(e.nativeEvent.text)}
                         style={input}
                     />
-                    <Button title="Login" buttonStyle={[colorStyle.darkPinkBG]} />
+                    <Button title="Login" onPress={handleLogin} buttonStyle={[colorStyle.darkPinkBG]} />
                 </View>
                 <Text style={[layoutStyle.verMargin10]}>หรือเข้าใช้ด้วยช่องทางอื่น</Text>
                 <View style={otherLoginContainer}>
@@ -36,6 +55,6 @@ const LoginPage = () => {
             </View>
         </View>
     )
-}
+})
 
 export default LoginPage

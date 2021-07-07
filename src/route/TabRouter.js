@@ -3,8 +3,8 @@ import React from 'react'
 import Entypo from 'react-native-vector-icons/Entypo'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import { colorStyle } from '../style/globalStyle'
-import LoginPage from '../page/login/Login'
 import HomePage from '../page/home/Home'
+import LandingPage from '../page/landing/Landing'
 
 const Tab = createBottomTabNavigator()
 
@@ -34,7 +34,7 @@ const Navbar = ({route}) => {
     return (
         <Tab.Navigator screenOptions={iconHandler} >
             <Tab.Screen name="Home" component={HomePage} />
-            <Tab.Screen name="Profile" component={LoginPage} />
+            <Tab.Screen name="Profile" component={LandingPage} />
         </Tab.Navigator>
     )
 }
