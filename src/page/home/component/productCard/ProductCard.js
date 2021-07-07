@@ -7,6 +7,8 @@ import productPNG from '../../../../assets/product-example.png'
 
 const ProductCard = ({ first, goProductPage }) => {
 
+    const mock = "หูฟังไร้สายรุ่นยอดนิยม แม้ว่าราคาเปิดตัวจะค่อนข้างแรง แต่เมื่อเทียบกับคุณภาพก็ถือว่าคุ้มค่าอย่างมาก จุดเด่นอยู่ที่ความสามารถในการเก็บรายละเอียดเสียง และเป็นหูฟังแบบ In-Ear เกาะติดแน่นเมื่อสวมใส่ ไม่ต้องกังวลว่าจะหลุดร่วงขณะสวมวิ่งออกกำลังกาย พร้อมทั้งมีคุณสมบัติกันน้ำ เรียกว่าเป็นรุ่นคลาสสิกของสาวกแอปเปิลเลยทีเดียว"
+
     const handleGoProductPage = () => goProductPage()
 
     return (
@@ -21,10 +23,10 @@ const ProductCard = ({ first, goProductPage }) => {
                 />
                 <Col containerStyle={first ? firstProductContent : productContent}>
                     <Row>
-                        <Text style={productName}>Product</Text>
+                        <Text style={productName}>หูฟังไร้สาย</Text>
                     </Row>
                     <Row>
-                        <Text style={productDes}>na dattebayo! dattebayo! dattebayo! dattebayo! dattebayo!</Text>
+                        <Text style={productDes}>{mock.length >= 80 ? mock.slice(0, 80) + ' อ่านเพิ่มเติม' :  mock}</Text>
                     </Row>
                 </Col>
             </Row>
