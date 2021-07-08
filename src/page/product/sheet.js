@@ -31,13 +31,14 @@ export const stylesheet = StyleSheet.create({
         marginBottom: 5
     },
     productDescWrapper: {
-        minHeight: '15%'
+        minHeight: '15%',
+        marginBottom: 10
     },
     productDesc: {
         fontSize: 20
     },
-    otherImgTextWrapper: {
-        marginBottom: 8
+    otherImgText: {
+
     },
     horizontalView: {
         height: 100,
