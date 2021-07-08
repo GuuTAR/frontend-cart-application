@@ -1,6 +1,9 @@
 import { StyleSheet } from "react-native";
 
 export const stylesheet = StyleSheet.create({
+    homePage: {
+        height: '100%'
+    },
     productContainer: {
         width: "100%",
         justifyContent: 'center'
