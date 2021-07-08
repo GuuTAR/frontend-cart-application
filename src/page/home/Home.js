@@ -39,7 +39,7 @@ const HomePage = observer(({navigation}) => {
                 />
                 <AntDesign name="shoppingcart" size={30} onPress={goCartPage} style={cartIcon} />
             </Row> 
-            <ScrollView style={{marginBottom: 66}} 
+            <ScrollView style={{marginBottom: 30}} 
                 onScroll={handleScroll} 
                 showsVerticalScrollIndicator={false}
             >
