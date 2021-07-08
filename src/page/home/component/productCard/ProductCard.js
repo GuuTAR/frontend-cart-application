@@ -4,6 +4,7 @@ import { firstProduct, firstProductContent, firstProductImg, price, productCard,
 import Row from "../../../../component/Row"
 import Col from "../../../../component/Col"
 import productPNG from '../../../../assets/product-example.png'
+import { readmoreCutter } from "../../../../function/global"
 
 const ProductCard = ({ first, goProductPage, product }) => {
 
@@ -24,7 +25,7 @@ const ProductCard = ({ first, goProductPage, product }) => {
                         <Text style={productName}>{product?.name || 'หูฟังไร้สาย'}</Text>
                     </Row>
                     <Row>
-                        <Text style={productDes}>{product?.desc.length >= 100 ? product?.desc.slice(0, 100) + '...อ่านเพิ่มเติม' :  product?.desc}</Text>
+                        <Text style={productDes}>{readmoreCutter(product?.desc, 95)}</Text>
                     </Row>
                 </Col>
             </Row>

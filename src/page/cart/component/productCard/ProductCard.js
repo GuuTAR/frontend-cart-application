@@ -7,6 +7,7 @@ import { actionWrapper, contentWrapper, productCard, productDes, productImg, pro
 import InputNumber from "../../../../component/InputNumber/InputNumber"
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import { useStore } from '../../../../global_store/useStore'
+import { readmoreCutter } from "../../../../function/global"
 
 const ProductCard = ({product}) => {
 
@@ -33,7 +34,7 @@ const ProductCard = ({product}) => {
                         <FontAwesome5 name="trash-alt" size={20} onPress={handleDeleteItemFromCart} />
                     </Row>
                     <Row containerStyle={productDes}>
-                        <Text>{product?.desc || "Description"}</Text>
+                        <Text>{readmoreCutter(product?.desc || "Description", 105)}</Text>
                     </Row>      
                     <Row containerStyle={actionWrapper}>
                         <InputNumber min={1} max={100} defaultValue={product?.count || 1} setNumber={setCount} />
