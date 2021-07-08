@@ -1,14 +1,17 @@
-import { ScrollView, View } from "react-native"
-import React, { useLayoutEffect, useState } from "react"
+import { ScrollView, Text, View } from "react-native"
+import React, { useState } from "react"
 import { colorStyle, layoutStyle } from "../../style/globalStyle"
 import ProductCard from "./component/productCard/ProductCard"
-import { cartIcon, input, productContainer, searchBar, searchContainer } from "./style"
+import { cartIcon, homePage, input, productContainer, searchBar, searchContainer } from "./style"
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import { SearchBar } from "react-native-elements"
 import Row from "../../component/Row"
-import { homeProduct } from '../../mockup/home'
+import { observer } from "mobx-react-lite"
+import { useStore } from "../../global_store/useStore"
 
-const HomePage = ({navigation}) => {
+const HomePage = observer(({navigation}) => {
+
+    const { getHomeProducts, changeKeyword } = useStore().homeStore
 
     const [scroll, setScroll] = useState(false)
 
@@ -25,13 +28,14 @@ const HomePage = ({navigation}) => {
         <ProductCard key={idx} goProductPage={goProductPage} product={product} />) 
 
     return (
-        <View style={[colorStyle.grayBG]}>
+        <View style={homePage}>
             <Row containerStyle={[searchBar, scroll && colorStyle.darkPinkBG]}>
                 <SearchBar
                     placeholder="ค้นหา..."
                     containerStyle={[searchContainer, layoutStyle.row]}
                     inputStyle={[input]}
                     platform="android"
+                    onChangeText={changeKeyword}
                 />
                 <AntDesign name="shoppingcart" size={30} onPress={goCartPage} style={cartIcon} />
             </Row> 
@@ -40,11 +44,13 @@ const HomePage = ({navigation}) => {
                 showsVerticalScrollIndicator={false}
             >
                 <Row containerStyle={productContainer}>
-                    {homeProduct.map(renderProductCard)}
+                    {getHomeProducts().length > 0 ? 
+                        getHomeProducts().map(renderProductCard) : 
+                        <Text>ไม่มีสินค้าที่ตรงตามเงื่อนไขดังกล่าว</Text>}
                 </Row>
             </ScrollView>
         </View>
     )
-}
+})
 
 export default HomePage
