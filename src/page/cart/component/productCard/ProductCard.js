@@ -11,8 +11,6 @@ import { readmoreCutter } from "../../../../function/global"
 
 const ProductCard = ({product}) => {
 
-    console.log(product)
-
     const { deleteItemInCart, editItemInCart } = useStore().cartStore
 
     const [count, setCount] = useState(product?.count || 1)
@@ -23,7 +21,6 @@ const ProductCard = ({product}) => {
         editItemInCart({...product, count}, product.id)
     }, [count])
     
-    console.log(product.price)
     return (
         <View style={productCard}>
             <Row>

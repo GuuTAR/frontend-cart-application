@@ -29,7 +29,6 @@ export default class CartStore {
         }
     })
     editItemInCart = (editItem, id) => runInAction(() => {
-        console.log(editItem)
         this.carts = this.carts.map(item => {
             if (item.id === id) {
                 this.totalPrice = this.totalPrice - (item.count * item.price) + (editItem.count * editItem.price)
