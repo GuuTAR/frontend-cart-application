@@ -23,6 +23,8 @@ export const stylesheet = StyleSheet.create({
         paddingHorizontal: '15%',
 
         justifyContent: 'flex-start'
+    },  
+    unitText: {
+        width: 70
     }
-
 })

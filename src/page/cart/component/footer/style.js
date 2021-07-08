@@ -4,3 +4,4 @@ import { colorStyle, layoutStyle, textStyle } from '../../../../style/globalStyl
 export const cartFooterContainer = [stylesheet.cartFooterContainer, colorStyle.whiteBG]
 export const desRow = [stylesheet.desRow]
 export const checkoutButton = [colorStyle.darkPinkBG, stylesheet.checkoutButton]
+export const unitText = [stylesheet.unitText, textStyle.textRight]
