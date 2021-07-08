@@ -1,7 +1,7 @@
 import { Dimensions, Image, ScrollView, Text, View } from "react-native"
 import React, { useRef } from "react"
 import productPNG from '../../assets/product-example.png'
-import { addToCartButton, horizontalView, imgWrapper, otherImg, otherImgTextWrapper, productDescWrapper, productImg, productImgWrapper, productName, productNameWrapper, productPage } from "./style"
+import { addToCartButton, horizontalView, imgWrapper, otherImg, otherImgText, productDescWrapper, productImg, productImgWrapper, productName, productNameWrapper, productPage } from "./style"
 import Row from '../../component/Row'
 import Header from '../../component/header/Header'
 import ProductFooter from "./component/footer/Footer"
@@ -34,7 +34,7 @@ const ProductPage = ({ navigation, route }) => {
                 <Text>{product?.desc || 'ของดีเมืองอุทัย'}</Text>
             </Row>
             <Row containerStyle={productNameWrapper}>
-                <Text style={otherImgTextWrapper}>รูปสินค้าเพิ่มเติม</Text>
+                <Text style={otherImgText}>รูปสินค้าเพิ่มเติม</Text>
             </Row>
             <ScrollView 
                 horizontal 
