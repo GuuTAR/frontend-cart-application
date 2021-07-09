@@ -46,7 +46,6 @@ export const stylesheet = StyleSheet.create({
     },
     imgWrapper: {
         height: '100%',
-        alignItems: 'center'
     },
     otherImg: {
         width: 100,
