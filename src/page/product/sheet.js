@@ -41,11 +41,14 @@ export const stylesheet = StyleSheet.create({
 
     },
     horizontalView: {
+        width: '100%',
         height: 100,
         paddingHorizontal: '2.5%'
     },
     imgWrapper: {
         height: '100%',
+        justifyContent: 'flex-start',
+        marginTop: 5
     },
     otherImg: {
         width: 100,
