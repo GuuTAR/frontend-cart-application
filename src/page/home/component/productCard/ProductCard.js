@@ -3,7 +3,6 @@ import * as React from "react"
 import { firstProduct, firstProductContent, firstProductImg, price, productCard, productContent, productDes, productImg, productName } from "./style"
 import Row from "../../../../component/Row"
 import Col from "../../../../component/Col"
-import productPNG from '../../../../assets/product-example.png'
 import { readmoreCutter } from "../../../../function/global"
 
 const ProductCard = ({ first, goProductPage, product }) => {
@@ -17,7 +16,7 @@ const ProductCard = ({ first, goProductPage, product }) => {
         >
             <Row>
                 <Image
-                    source={productPNG}
+                    source={{uri : product?.img}}
                     style={[productImg, first && firstProductImg]}
                 />
                 <Col containerStyle={first ? firstProductContent : productContent}>

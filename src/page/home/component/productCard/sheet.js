@@ -19,10 +19,11 @@ export const styleSheet = StyleSheet.create({
     },
     productImg: {
         width: "100%",
-        height: 130
+        height: 130,
     },
     firstProductImg: {
-        width: "50%",
+        width: "45%",
+        marginRight: 10
     },
     firstProductCard: {
         width: "97%",

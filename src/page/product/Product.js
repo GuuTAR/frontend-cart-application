@@ -1,6 +1,5 @@
 import { Dimensions, Image, ScrollView, Text, View } from "react-native"
 import React, { useRef } from "react"
-import productPNG from '../../assets/product-example.png'
 import { addToCartButton, horizontalView, imgWrapper, otherImg, otherImgText, productDescWrapper, productImg, productImgWrapper, productName, productNameWrapper, productPage } from "./style"
 import Row from '../../component/Row'
 import Header from '../../component/header/Header'
@@ -24,7 +23,7 @@ const ProductPage = ({ navigation, route }) => {
         <View style={productPage}>
             <Header title={product?.name || 'product'} goBack={handleGoBack} />
             <View style={productImgWrapper}>
-                <Image source={productPNG} style={productImg} />
+                <Image source={{uri : product?.img}} style={productImg} />
                 <AntDesign name="shoppingcart" style={addToCartButton} onPress={handleshowAddCart}/>
             </View>
             <Row containerStyle={productNameWrapper}>
@@ -42,11 +41,7 @@ const ProductPage = ({ navigation, route }) => {
                 contentContainerStyle={horizontalView}
             >
                 <Row containerStyle={imgWrapper}>
-                    <Image source={productPNG} style={otherImg} />
-                    <Image source={productPNG} style={otherImg} />
-                    <Image source={productPNG} style={otherImg} />
-                    <Image source={productPNG} style={otherImg} />
-                    <Image source={productPNG} style={otherImg} />
+                    {<Text>ไม่มีรูปเพิ่มเติม</Text>}
                 </Row>
             </ScrollView>
             <RBSheet

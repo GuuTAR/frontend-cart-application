@@ -1,7 +1,6 @@
 import { Image, Text, View } from "react-native"
 import React, { useEffect, useState } from "react"
 import Row from "../../../../component/Row"
-import productPNG from '../../../../assets/product-example.png'
 import Col from "../../../../component/Col"
 import { actionWrapper, contentWrapper, productCard, productDes, productImg, productName, productNameWrapper, productPrice } from "./style"
 import InputNumber from "../../../../component/InputNumber/InputNumber"
@@ -24,7 +23,7 @@ const ProductCard = ({product}) => {
     return (
         <View style={productCard}>
             <Row>
-                <Image source={productPNG} style={productImg} />
+                <Image source={product?.img} style={productImg} />
                 <Col containerStyle={contentWrapper}>
                     <Row containerStyle={productNameWrapper}>
                         <Text style={productName}>{product?.name || "Product"}</Text>
