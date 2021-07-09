@@ -5,6 +5,7 @@ import auth from '@react-native-firebase/auth'
 import { useStore } from './src/global_store/useStore';
 import { isSomeInvalidValue } from './src/function/global';
 import { observer } from "mobx-react-lite";
+import FlashMessage from "react-native-flash-message";
 
 const App = observer(() => {
 
@@ -27,6 +28,7 @@ const App = observer(() => {
   return (
     <NavigationContainer>
       <RootRouter />
+      <FlashMessage position="top" />
     </NavigationContainer>
   )
 })
