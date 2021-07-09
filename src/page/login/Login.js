@@ -16,15 +16,19 @@ const LoginPage = () => {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
 
+    const [loggingIn, setLoggingIn] = useState(false)
+
     const handleLogin = () => {
-        if (!isSomeInvalidValue(email) && !isSomeInvalidValue(password))
+        setLoggingIn(true)
+        if (!isSomeInvalidValue(email) && !isSomeInvalidValue(password)) 
             login(email, password)
-        else 
+        else
             console.log('Invalid value')
+        setLoggingIn(false)
     }
 
     const handleLoginFacebook = () => onFacebookButtonPress().then(() => console.log('facebook signed in!'))
-    
+
 
     return (
         <View style={loginPage}>
@@ -48,7 +52,10 @@ const LoginPage = () => {
                         onChange={e => setPassword(e.nativeEvent.text)}
                         style={input}
                     />
-                    <Button title="Login" onPress={handleLogin} buttonStyle={[colorStyle.darkPinkBG]} />
+                    {loggingIn ? 
+                        <Button title="Login" loading onPress={handleLogin} buttonStyle={[colorStyle.darkPinkBG]} /> :
+                        <Button title="Login" onPress={handleLogin} buttonStyle={[colorStyle.darkPinkBG]} />
+                    }
                 </View>
                 <Text style={[layoutStyle.verMargin10]}>หรือเข้าใช้ด้วยช่องทางอื่น</Text>
                 <View style={otherLoginContainer}>
