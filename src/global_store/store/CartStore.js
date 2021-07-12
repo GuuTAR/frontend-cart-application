@@ -1,4 +1,5 @@
 import { makeAutoObservable, runInAction } from "mobx"
+import { notification } from "../../component/Notification/Notification"
 
 export default class CartStore {
     rootStore
@@ -27,6 +28,7 @@ export default class CartStore {
             this.carts.push(item)
             this.totalPrice += item.count * item.price
         }
+        notification('Add product to cart success!', 'Please check your cart', 'success')
     })
     editItemInCart = (editItem, id) => runInAction(() => {
         this.carts = this.carts.map(item => {

@@ -23,7 +23,7 @@ const ProductCard = ({product}) => {
     return (
         <View style={productCard}>
             <Row>
-                <Image source={product?.img} style={productImg} />
+                <Image source={{uri : product?.img}} style={productImg} />
                 <Col containerStyle={contentWrapper}>
                     <Row containerStyle={productNameWrapper}>
                         <Text style={productName}>{product?.name || "Product"}</Text>

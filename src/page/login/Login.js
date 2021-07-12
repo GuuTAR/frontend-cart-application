@@ -1,13 +1,15 @@
-import { Text, View } from "react-native"
-import React, { useState } from 'react'
+import { Animated, Text, View } from "react-native"
+import React, { useRef, useState } from 'react'
 import { colorStyle, layoutStyle } from "../../style/globalStyle"
 import { background, formContainer, input, loginContainer, loginPage, loginTitle, otherLoginContainer } from "./style"
-import { Button, Input } from "react-native-elements"
+import { Input, Button } from "react-native-elements"
 import FontAwesome5Icon from "react-native-vector-icons/FontAwesome5"
 import { facebook } from "../../style/variables"
 import { useStore } from "../../global_store/useStore"
 import { isSomeInvalidValue } from "../../function/global"
 import { onFacebookButtonPress } from "../../services/facebook.service"
+import ShakeButton from '../../component/ShakeButton/ShakeButton'
+import { shakeElement } from '../../animation/global'
 
 const LoginPage = () => {
 
@@ -16,15 +18,23 @@ const LoginPage = () => {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
 
+    const [loggingIn, setLoggingIn] = useState(false)
+
+    const shakePosition = useRef(new Animated.Value(0)).current
+
     const handleLogin = () => {
-        if (!isSomeInvalidValue(email) && !isSomeInvalidValue(password))
+        setLoggingIn(true)
+        if (!isSomeInvalidValue(email) && !isSomeInvalidValue(password)) 
             login(email, password)
-        else 
+        else {
+            shakeElement(shakePosition)
             console.log('Invalid value')
+            setLoggingIn(false)
+        }
     }
 
     const handleLoginFacebook = () => onFacebookButtonPress().then(() => console.log('facebook signed in!'))
-    
+
 
     return (
         <View style={loginPage}>
@@ -48,7 +58,19 @@ const LoginPage = () => {
                         onChange={e => setPassword(e.nativeEvent.text)}
                         style={input}
                     />
-                    <Button title="Login" onPress={handleLogin} buttonStyle={[colorStyle.darkPinkBG]} />
+                    {loggingIn ? 
+                        <Button
+                            title="Loading" 
+                            loading 
+                            buttonStyle={[colorStyle.darkPinkBG]} 
+                        /> :
+                        <ShakeButton 
+                            title="Login" 
+                            onPress={handleLogin} 
+                            animateRef={shakePosition}
+                            buttonStyle={[colorStyle.darkPinkBG]} 
+                        />
+                    }
                 </View>
                 <Text style={[layoutStyle.verMargin10]}>หรือเข้าใช้ด้วยช่องทางอื่น</Text>
                 <View style={otherLoginContainer}>
