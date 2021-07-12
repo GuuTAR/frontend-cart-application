@@ -24,8 +24,8 @@ const HomePage = observer(({navigation}) => {
     const goProductPage = (data) => navigation.push('Product', data)
 
     const renderProductCard = (product, idx) => (idx === 0 ? 
-        <ProductCard key={idx} first goProductPage={goProductPage} product={product} /> : 
-        <ProductCard key={idx} goProductPage={goProductPage} product={product} />) 
+        <ProductCard key={idx} first goProductPage={goProductPage} product={{...product, price: parseInt(product.price)}} /> : 
+        <ProductCard key={idx} goProductPage={goProductPage} product={{...product, price: parseInt(product.price)}} />) 
 
     return (
         <View style={homePage}>
