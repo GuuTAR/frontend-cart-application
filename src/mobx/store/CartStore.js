@@ -1,5 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx"
 import { notification } from "../../component/Notification/Notification"
+import { getCartFromLocalStorage, addCartToLocalStorage, editItemInLocalStorage, deleteItemInLocalStorage } from '../../services/cart.service'
+import { getTotalPrice } from '../../function/global'
 
 export default class CartStore {
     rootStore
@@ -9,41 +11,39 @@ export default class CartStore {
     constructor(rootStore) {
         makeAutoObservable(this)
         this.rootStore = rootStore
+        this.fetchCarts()
     }
 
-    allCarts = () => runInAction(() =>
-        this.carts
-    )
-
-    addItemToCart = (item) => runInAction(() => {
-        if (this.carts.find(product => product.id === item.id))
-            this.carts = this.carts.map(product => {
-                if (product.id === item.id) {
-                    product.count += item.count
-                    this.totalPrice += item.count * item.price
-                }
-                return product
+    fetchCarts = async () => {
+        const result = await getCartFromLocalStorage()
+        if (result.success) {
+            runInAction(() => {
+                this.carts = result.data
+                this.totalPrice = getTotalPrice(result.data)
             })
-        else {
-            this.carts.push(item)
-            this.totalPrice += item.count * item.price
         }
-        notification('Add product to cart success!', 'Please check your cart', 'success')
-    })
-    editItemInCart = (editItem, id) => runInAction(() => {
-        this.carts = this.carts.map(item => {
-            if (item.id === id) {
-                this.totalPrice = this.totalPrice - (item.count * item.price) + (editItem.count * editItem.price)
-                return editItem
-            }
-            else return item
-        })
-    })
-    deleteItemInCart = (id) => runInAction(() =>
-        this.carts = this.carts.filter(item => {
-            if (item.id === id) this.totalPrice -= item.count * item.price
-            return item.id !== id
-        })
+    }
 
-    )
+    addItemToCart = async (item) => {
+        const result = await addCartToLocalStorage(item)
+        if (result.success) {
+            runInAction(() => this.fetchCarts())
+            notification('Add product to cart success!', 'Please check your cart', 'success')
+        }
+        else {
+            console.log(result.error)
+            notification('Add product to cart fail!', 'Something error before add product to cart', 'error')
+        }
+    }
+    editItemInCart = async (editItem, id) => {
+        const result = await editItemInLocalStorage(editItem, id)
+        if (result.success) runInAction(() => this.fetchCarts())
+        else console.log(result.error)
+    }
+
+    deleteItemInCart = async (id) => { 
+        const result = await deleteItemInLocalStorage(id)
+        if (result.success) runInAction(() => this.fetchCarts())
+        else console.log(result.error)
+    }
 }
