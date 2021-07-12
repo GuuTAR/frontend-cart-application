@@ -21,7 +21,7 @@ const ProductCard = ({ first, goProductPage, product }) => {
                 />
                 <Col containerStyle={first ? firstProductContent : productContent}>
                     <Row>
-                        <Text style={productName}>{product?.name || 'หูฟังไร้สาย'}</Text>
+                        <Text style={productName}>{readmoreCutter(product?.name, 18, '...')}</Text>
                     </Row>
                     <Row>
                         <Text style={productDes}>{readmoreCutter(product?.desc, 95)}</Text>
