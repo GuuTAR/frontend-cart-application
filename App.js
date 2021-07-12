@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import RootRouter from './src/route/RootRouter';
 import auth from '@react-native-firebase/auth'
-import { useStore } from './src/global_store/useStore';
+import { useStore } from './src/mobx/useStore';
 import { isSomeInvalidValue } from './src/function/global';
 import { observer } from "mobx-react-lite";
 import FlashMessage from "react-native-flash-message";

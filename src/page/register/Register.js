@@ -3,7 +3,7 @@ import React, { useState } from "react"
 import { background, formContainer, registerButton, registerContainer, registerPage, registerTitle } from "./style"
 import FontAwesome5Icon from "react-native-vector-icons/FontAwesome5"
 import { Button, CheckBox, Input } from "react-native-elements"
-import { useStore } from "../../global_store/useStore"
+import { useStore } from "../../mobx/useStore"
 import { isSomeInvalidValue } from "../../function/global"
 
 const RegisterPage = () => {

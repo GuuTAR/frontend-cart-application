@@ -7,7 +7,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import { SearchBar } from "react-native-elements"
 import Row from "../../component/Row"
 import { observer } from "mobx-react-lite"
-import { useStore } from "../../global_store/useStore"
+import { useStore } from "../../mobx/useStore"
 
 const HomePage = observer(({navigation}) => {
 

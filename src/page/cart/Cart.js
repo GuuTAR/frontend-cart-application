@@ -3,7 +3,7 @@ import React from "react"
 import { cartPage, productContainer } from "./style"
 import CartFooter from "./component/footer/CartFooter"
 import Header from "../../component/header/Header"
-import { useStore } from '../../global_store/useStore'
+import { useStore } from '../../mobx/useStore'
 import ProductCard from "./component/productCard/ProductCard"
 import { observer } from "mobx-react-lite"
 

@@ -5,7 +5,7 @@ import Col from "../../../../component/Col"
 import { actionWrapper, contentWrapper, productCard, productDes, productImg, productName, productNameWrapper, productPrice } from "./style"
 import InputNumber from "../../../../component/InputNumber/InputNumber"
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
-import { useStore } from '../../../../global_store/useStore'
+import { useStore } from '../../../../mobx/useStore'
 import { readmoreCutter } from "../../../../function/global"
 
 const ProductCard = ({product}) => {

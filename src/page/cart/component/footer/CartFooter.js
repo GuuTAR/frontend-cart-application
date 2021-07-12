@@ -4,7 +4,7 @@ import { Button } from "react-native-elements/dist/buttons/Button"
 import Row from '../../../../component/Row'
 import { cartFooterContainer, checkoutButton, desRow, unitText } from "./style"
 import { observer } from "mobx-react-lite"
-import { useStore } from "../../../../global_store/useStore"
+import { useStore } from "../../../../mobx/useStore"
 
 const CartFooter = observer(({ totalProduct = 5 }) => {
 

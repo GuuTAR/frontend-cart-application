@@ -2,7 +2,7 @@ import { Text, View } from "react-native"
 import React from "react"
 import { Button } from "react-native-elements"
 import { observer } from "mobx-react-lite"
-import { useStore } from '../../global_store/useStore'
+import { useStore } from '../../mobx/useStore'
 import { logoutButton, profilePage } from "./style"
 import { isSomeInvalidValue } from "../../function/global"
 
