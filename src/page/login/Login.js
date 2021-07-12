@@ -5,7 +5,7 @@ import { background, formContainer, input, loginContainer, loginPage, loginTitle
 import { Input, Button } from "react-native-elements"
 import FontAwesome5Icon from "react-native-vector-icons/FontAwesome5"
 import { facebook } from "../../style/variables"
-import { useStore } from "../../global_store/useStore"
+import { useStore } from "../../mobx/useStore"
 import { isSomeInvalidValue } from "../../function/global"
 import { onFacebookButtonPress } from "../../services/facebook.service"
 import ShakeButton from '../../component/ShakeButton/ShakeButton'

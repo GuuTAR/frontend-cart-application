@@ -5,7 +5,7 @@ import Navbar from "./TabRouter";
 import ProductPage from "../page/product/Product";
 import RegisterPage from "../page/register/Register";
 import LoginPage from "../page/login/Login";
-import { useStore } from "../global_store/useStore";
+import { useStore } from "../mobx/useStore";
 import { observer } from "mobx-react-lite";
 import LandingPage from "../page/landing/Landing";
 

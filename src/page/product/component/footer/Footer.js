@@ -4,7 +4,7 @@ import { addToCartButton, buttonWrapper, footerContainer, inputContainer } from 
 import Row from "../../../../component/Row"
 import InputNumber from '../../../../component/InputNumber/InputNumber'
 import { Button } from "react-native-elements"
-import { useStore } from "../../../../global_store/useStore"
+import { useStore } from "../../../../mobx/useStore"
 
 const ProductFooter = ({ product, hide }) => {
 

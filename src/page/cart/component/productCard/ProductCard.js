@@ -5,7 +5,7 @@ import Col from "../../../../component/Col"
 import { actionWrapper, contentWrapper, productCard, productDes, productImg, productName, productNameWrapper, productPrice } from "./style"
 import InputNumber from "../../../../component/InputNumber/InputNumber"
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
-import { useStore } from '../../../../global_store/useStore'
+import { useStore } from '../../../../mobx/useStore'
 import { readmoreCutter } from "../../../../function/global"
 
 const ProductCard = ({product}) => {
@@ -14,10 +14,10 @@ const ProductCard = ({product}) => {
 
     const [count, setCount] = useState(product?.count || 1)
 
-    const handleDeleteItemFromCart = () => deleteItemInCart(product.id)
+    const handleDeleteItemFromCart = () => deleteItemInCart(product._id)
 
     useEffect(() => {
-        editItemInCart({...product, count}, product.id)
+        if (product) editItemInCart({...product, count}, product._id)
     }, [count])
     
     return (
@@ -26,7 +26,7 @@ const ProductCard = ({product}) => {
                 <Image source={{uri : product?.img}} style={productImg} />
                 <Col containerStyle={contentWrapper}>
                     <Row containerStyle={productNameWrapper}>
-                        <Text style={productName}>{product?.name || "Product"}</Text>
+                        <Text style={productName}>{readmoreCutter(product?.name || "Product", 14, '..')}</Text>
                         <FontAwesome5 name="trash-alt" size={20} onPress={handleDeleteItemFromCart} />
                     </Row>
                     <Row containerStyle={productDes}>
