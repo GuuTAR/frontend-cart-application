@@ -9,5 +9,10 @@ export const registerTitle = [stylesheet.registerTitle, colorStyle.whiteText, te
 export const registerContainer = [stylesheet.registerContainer, layoutStyle.center]
 export const formContainer = [stylesheet.formContainer, colorStyle.whiteBG]
 
+export const inputContainer = [stylesheet.inputContainer]
+export const errorText = [stylesheet.errorText, colorStyle.redText, textStyle.textLeft]
+
+export const errorCheckbox = [colorStyle.redText]
+
 export const registerButton = [stylesheet.registerButton, colorStyle.darkPinkBG]
 
