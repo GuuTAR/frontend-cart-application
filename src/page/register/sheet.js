@@ -30,8 +30,15 @@ export const stylesheet = StyleSheet.create({
 
         alignItems: 'center',
     },
+    inputContainer: {
+        height: 80
+    },
+    errorText: {
+        width: '90%',
+        marginBottom: 5
+    },
     registerButton: {
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         paddingHorizontal: '20%'
     }
 })
