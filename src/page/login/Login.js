@@ -25,7 +25,7 @@ const LoginPage = () => {
     const handleLogin = () => {
         setLoggingIn(true)
         if (!isSomeInvalidValue(email) && !isSomeInvalidValue(password)) 
-            login(email, password)
+            login(email, password, setLoggingIn)
         else {
             shakeElement(shakePosition)
             console.log('Invalid value')

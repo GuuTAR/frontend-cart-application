@@ -18,9 +18,9 @@ export default class AuthStore {
         })
     }
 
-    register = (email, password) => firebaseRegister(email, password)
+    register = (email, password, setErrorMsg) => firebaseRegister(email, password, setErrorMsg)
 
-    login = (email, password) => firebaseLogin(email, password)
+    login = (email, password, setLoggingIn) => firebaseLogin(email, password, setLoggingIn)
 
     logout = () => {
         firebaseLogout()
