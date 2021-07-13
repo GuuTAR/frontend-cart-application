@@ -1,4 +1,4 @@
-import { makeAutoObservable, runInAction } from "mobx"
+import { makeAutoObservable, runInAction, reaction } from "mobx"
 import { notification } from "../../component/Notification/Notification"
 import { getCartFromLocalStorage, addCartToLocalStorage, editItemInLocalStorage, deleteItemInLocalStorage } from '../../services/cart.service'
 import { getTotalPrice } from '../../function/global'
@@ -12,10 +12,14 @@ export default class CartStore {
         makeAutoObservable(this)
         this.rootStore = rootStore
         this.fetchCarts()
+        reaction(
+            () => this.rootStore.authStore.email,
+            () => this.fetchCarts()
+        )
     }
 
     fetchCarts = async () => {
-        const result = await getCartFromLocalStorage()
+        const result = await getCartFromLocalStorage(this.rootStore.authStore.email)
         if (result.success) {
             runInAction(() => {
                 this.carts = result.data
@@ -25,7 +29,7 @@ export default class CartStore {
     }
 
     addItemToCart = async (item) => {
-        const result = await addCartToLocalStorage(item)
+        const result = await addCartToLocalStorage(this.rootStore.authStore.email, item)
         if (result.success) {
             runInAction(() => this.fetchCarts())
             notification('Add product to cart success!', 'Please check your cart', 'success')
@@ -36,13 +40,13 @@ export default class CartStore {
         }
     }
     editItemInCart = async (editItem, id) => {
-        const result = await editItemInLocalStorage(editItem, id)
+        const result = await editItemInLocalStorage(this.rootStore.authStore.email, editItem, id)
         if (result.success) runInAction(() => this.fetchCarts())
         else console.log(result.error)
     }
 
     deleteItemInCart = async (id) => { 
-        const result = await deleteItemInLocalStorage(id)
+        const result = await deleteItemInLocalStorage(this.rootStore.authStore.email, id)
         if (result.success) runInAction(() => this.fetchCarts())
         else console.log(result.error)
     }

@@ -1,5 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx"
 import { firebaseLogin, firebaseLogout, firebaseRegister } from "../../services/firebase.service"
+import { initUserStorage } from "../../services/user.service"
 
 export default class AuthStore {
     rootStore
@@ -15,6 +16,7 @@ export default class AuthStore {
         runInAction(() => {
             this.email = email
             this.displayName = name
+            initUserStorage(email)
         })
     }
 

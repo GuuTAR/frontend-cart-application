@@ -1,62 +1,66 @@
-import { ProductSchema } from "../storage/schema/product"
-import Realm from 'realm'
 import { success, fail } from './realm.service'
-import { openCartStorage } from "../config/realm"
+import { openStorage } from "../config/realm"
 
-export const getCartFromLocalStorage = async () => {
+export const getCartFromLocalStorage = async (email) => {
     try {
-        const cartStorage = await openCartStorage()
-        return success(cartStorage.objects("Product"), "Get data successfully!")
+        const userStorage = await openStorage()
+        const cart = userStorage.objects("User").find(user => user.email === email).cart
+
+        return success(cart, "Get data successfully!")
     } catch (error) {
         return fail("Get data fail!")
     }
 }
 
-export const addCartToLocalStorage = async (product) => {
+export const addCartToLocalStorage = async (email, product) => {
     try {
-        const cartStorage = await openCartStorage()
+        const userStorage = await openStorage()
+        const user = userStorage.objectForPrimaryKey('User', email)
+
         let duplicate = false
-        cartStorage.objects("Product").forEach(p => {
+        user.cart.forEach(p => {
             if (p._id === product._id) {
-                cartStorage.write(() => { p.count += product.count });
+                userStorage.write(() => { p.count += product.count });
                 duplicate = true
                 return
             }
         })
-        if (!duplicate) cartStorage.write(() => cartStorage.create("Product",
-            {
-                _id: product._id
-                , ...product
-            }))
-        cartStorage.close()
+        if (!duplicate) userStorage.write(() => { user.cart = [...user.cart, product] })
+        userStorage.close()
+
         return success("Save product to storage successfully!")
     } catch (error) {
         return fail("Save product to storage fail!", error)
     }
 }
 
-export const editItemInLocalStorage = async (editItem, id) => {
+export const editItemInLocalStorage = async (email, editItem, id) => {
     try {
-        const cartStorage = await openCartStorage()
-        cartStorage.objects("Product").forEach(product => {
+        const userStorage = await openStorage()
+        const user = userStorage.objectForPrimaryKey('User', email)
+
+        user.cart.forEach(product => {
             if (product._id === id) {
-                cartStorage.write(() => { product.count = editItem.count});
-                duplicate = true
+                userStorage.write(() => { product.count = editItem.count});
                 return
             }
         })
-        cartStorage.close()
+        userStorage.close()
+
         return success("Edit product successfully!")
     } catch (error) {
         return fail("Edit product fail!", error)
     }
 }
 
-export const deleteItemInLocalStorage = async (id) => {
+export const deleteItemInLocalStorage = async (email, id) => {
     try {
-        const cartStorage = await openCartStorage()
-        cartStorage.write(() => cartStorage.delete(cartStorage.objectForPrimaryKey("Product", id)))
-        cartStorage.close()
+        const userStorage = await openStorage()
+        const user = userStorage.objectForPrimaryKey('User', email)
+
+        userStorage.write(() => { user.cart = user.cart.filter(product => product._id !== id)})
+        userStorage.close()
+
         return success("Delete product successfully!")
     } catch (error) {
         return fail("Delete product fail!", error)
