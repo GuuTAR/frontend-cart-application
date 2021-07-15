@@ -8,6 +8,9 @@ export const colorStyle = StyleSheet.create({
     whiteBG: {
         backgroundColor: white,
     },
+    blackBG: {
+        backgroundColor: black,
+    },
     darkPinkBG: {
         backgroundColor: darkPink,
     },
