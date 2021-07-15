@@ -12,23 +12,25 @@ export const getTotalPrice = (data) => data.reduce((a, b) => a + b.price * b.cou
 
 export const downloadFileToGallary = (name, url) => {
     const { config, fs } = RNFetchBlob;
-    let PictureDir = fs.dirs.PictureDir + '/cart-app/';
+    let PictureDir = fs.dirs.PictureDir;
     let options = {
         fileCache: true,
+        overwrite: true,
         addAndroidDownloads: {
             useDownloadManager: true,
             notification: true,
             title : `Cart App : downloading ${name}...`,
-            path: PictureDir + name,
+            description: 'Cart App',
+            path: `${PictureDir}/cart-app/${name}`,
         }
     };
     config(options)
         .fetch('GET', url)
         .then(res => {
             if (res.data) {
-                alert('download_success');
+                alert('Download file successfully!');
             } else {
-                alert('download_failed');
+                alert('Download file failed..');
             }
         });
 }
