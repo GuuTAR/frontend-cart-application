@@ -1,4 +1,5 @@
-import RNFetchBlob from 'rn-fetch-blob'
+import {NativeModules} from 'react-native';
+const RNFetchBlob = NativeModules.RNFetchBlob;
 
 export const isnull = (value) => value === null
 export const isUndefined = (value) => value === undefined
