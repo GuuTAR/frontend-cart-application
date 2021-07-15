@@ -1,4 +1,4 @@
-import { Dimensions, Image, ScrollView, Text, View } from "react-native"
+import { Dimensions, Image, Pressable, ScrollView, Text, View } from "react-native"
 import React, { useRef } from "react"
 import { addToCartButton, horizontalView, imgWrapper, otherImg, otherImgText, productDescWrapper, productImg, productImgWrapper, productName, productNameWrapper, productPage } from "./style"
 import Row from '../../component/Row'
@@ -17,14 +17,21 @@ const ProductPage = ({ navigation, route }) => {
     const handleshowAddCart = () => bottomSheet.current.open()
     const handlehideAddCart = () => bottomSheet.current.close()
 
+    const handlePreviewImg = () => navigation.push('PreviewImg', { url: product?.img, name: product?.name })
+
     const product = route.params
 
     return (
         <View style={productPage}>
             <Header title={product?.name || 'product'} goBack={handleGoBack} />
             <View style={productImgWrapper}>
-                <Image source={{uri : product?.img}} style={productImg} />
-                <AntDesign name="shoppingcart" style={addToCartButton} onPress={handleshowAddCart}/>
+                <Pressable style={productImg} onPress={handlePreviewImg}>
+                    <Image
+                        source={{ uri: product?.img }}
+                        style={productImg}
+                    />
+                </Pressable>
+                <AntDesign name="shoppingcart" style={addToCartButton} onPress={handleshowAddCart} />
             </View>
             <Row containerStyle={productNameWrapper}>
                 <Text style={productName}>{product?.name || 'product'}</Text>
@@ -35,8 +42,8 @@ const ProductPage = ({ navigation, route }) => {
             <Row containerStyle={productNameWrapper}>
                 <Text style={otherImgText}>รูปสินค้าเพิ่มเติม</Text>
             </Row>
-            <ScrollView 
-                horizontal 
+            <ScrollView
+                horizontal
                 showsHorizontalScrollIndicator={false}
                 contentContainerStyle={horizontalView}
             >
@@ -48,7 +55,7 @@ const ProductPage = ({ navigation, route }) => {
                 ref={bottomSheet}
                 closeOnDragDown={true}
                 closeOnPressMask={true}
-                customStyles={{container: {height: screenHeight*0.25}}}
+                customStyles={{ container: { height: screenHeight * 0.25 } }}
             >
                 <ProductFooter product={product} hide={handlehideAddCart} />
             </RBSheet>
