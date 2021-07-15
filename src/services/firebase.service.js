@@ -6,6 +6,7 @@ export const firebaseLogin = (email, password, setLoggingIn) => {
         .signInWithEmailAndPassword(email, password)
         .then(() => notification('Login success!', 'Enjoy your shopping', 'success'))
         .catch(error => {
+            console.log(error)
             setLoggingIn(false)
             switch (error.code) {
                 case 'auth/wrong-password':

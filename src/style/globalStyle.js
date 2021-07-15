@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { black, darkPink, gray, pink, red, thinPink, white } from "./variables";
+import { black, darkPink, genBlack, gray, pink, red, thinPink, white } from "./variables";
 
 export const colorStyle = StyleSheet.create({
     grayBG: {
@@ -7,6 +7,12 @@ export const colorStyle = StyleSheet.create({
     },
     whiteBG: {
         backgroundColor: white,
+    },
+    blackBG: {
+        backgroundColor: black,
+    },
+    genBlackBG: {
+        backgroundColor: genBlack,
     },
     darkPinkBG: {
         backgroundColor: darkPink,

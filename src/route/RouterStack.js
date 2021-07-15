@@ -8,6 +8,7 @@ import LoginPage from "../page/login/Login";
 import { useStore } from "../mobx/useStore";
 import { observer } from "mobx-react-lite";
 import LandingPage from "../page/landing/Landing";
+import PreviewImg from "../page/previewImg/PreviewImg";
 
 const RootStack = createStackNavigator()
 
@@ -38,8 +39,7 @@ export const HomeStackScreen = () => (
         <HomeStack.Screen name='Home' component={Navbar} />
         <HomeStack.Screen name='Cart' component={CartPage} />
         <HomeStack.Screen name='Product' component={ProductPage} />
-        <HomeStack.Screen name="SignIn" component={LoginPage} />
-        <HomeStack.Screen name="SignOut" component={RegisterPage} />
+        <HomeStack.Screen name='PreviewImg' component={PreviewImg} />
     </HomeStack.Navigator>
 )
 
