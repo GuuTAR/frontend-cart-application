@@ -11,7 +11,13 @@ export const stylesheet = StyleSheet.create({
     },
     buttonWrapper: {
         width: '100%',
-        justifyContent: 'flex-end',
-        paddingRight: 5
+
+        alignItems: 'center',
+        justifyContent: 'space-between',
+
+        paddingHorizontal: 5
     },
+    backText: {
+        fontSize: 20
+    }
 })

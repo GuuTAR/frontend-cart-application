@@ -1,6 +1,6 @@
-import { View, Image } from "react-native"
+import { View, Image, Text } from "react-native"
 import React from "react"
-import { buttonWrapper, image, previewImgContainer } from "./style"
+import { backText, buttonWrapper, image, previewImgContainer, saveButton } from "./style"
 import Row from "../../component/Row"
 import { Button } from "react-native-elements"
 import { downloadFileToGallary } from "../../function/global"
@@ -10,7 +10,7 @@ const PreviewImg = ({ navigation, route }) => {
     const { name, url } = route.params
 
     const handleDownload = () => downloadFileToGallary(name, url)
-
+    const handleGoBack = () => navigation.goBack()
 
     return (
         <View style={previewImgContainer}>
@@ -19,7 +19,8 @@ const PreviewImg = ({ navigation, route }) => {
                 style={image}
             />
             <Row containerStyle={buttonWrapper}>
-                <Button title="Save" onPress={handleDownload} />
+                <Text onPress={handleGoBack} style={backText}>{"< back"}</Text>
+                <Button title="Save" onPress={handleDownload} buttonStyle={saveButton} />
             </Row>
         </View>
     )
